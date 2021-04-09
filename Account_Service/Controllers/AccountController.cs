@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Account_Service.DataAccess;
 using Account_Service.Models;
 using Account_Service.Repository;
+using Account_Service.Logic;
 
 namespace Account_Service.Controllers
 {
@@ -15,6 +16,7 @@ namespace Account_Service.Controllers
     public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
+        private Hashing hashing;
         private AccountRepository accRepository;
 
         public AccountController(AccountDbContext context, ILogger<AccountController> logger)
@@ -35,6 +37,9 @@ namespace Account_Service.Controllers
             }
             else
             {
+                hashing = new Hashing();
+                account.password = hashing.ComputeSha256Hash(account.password);
+
                 int accountID = accRepository.create(account);
 
                 if ( accountID > 0)
