@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Account_Service.DataAccess;
 using Account_Service.Models;
-using Account_Service.Repository;
-using Account_Service.Logic;
+using Account_Service.Entities;
+using Account_Service.Services;
+using Account_Service.Services.Interfaces;
+using Account_Service.Helpers;
 
 namespace Account_Service.Controllers
 {
@@ -16,70 +18,87 @@ namespace Account_Service.Controllers
     public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
-        private Hashing hashing;
-        private AccountRepository accRepository;
+        private IAccountService _accService;
 
-        public AccountController(AccountDbContext context, ILogger<AccountController> logger)
+        public AccountController(IAccountService accountService, ILogger<AccountController> logger)
         {
-            accRepository = new AccountRepository(context);
+            _accService = accountService;
             _logger = logger;
         }
 
-        [HttpPost]
-        public ResponseModel create([FromBody]Account account)
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(AuthenticationRequest request)
         {
-            ResponseModel response = new ResponseModel();
+            var response = _accService.Authenticate(request);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public ResponseMessage create([FromBody]Account account)
+        {
+            ResponseMessage response = new ResponseMessage();
 
             if(String.IsNullOrEmpty(account.email) || String.IsNullOrEmpty(account.password))
             {
-                response.success = false;
-                response.message = "Email and Password cannot be empty";
+                response.Success = false;
+                response.Message = "Email and Password cannot be empty";
             }
             else
             {
-                hashing = new Hashing();
-                account.password = hashing.ComputeSha256Hash(account.password);
-
-                int accountID = accRepository.create(account);
+                int accountID = _accService.create(account);
 
                 if ( accountID > 0)
                 {
-                    response.success = true;
-                    response.message = "Success!";
-                    response.accountID = accountID;
+                    response.Success = true;
+                    response.Message = "Success!";
+                    response.AccountID = accountID;
                 }
                 else
                 {
-                    response.success = false;
-                    response.message = "Database Error!";
+                    response.Success = false;
+                    response.Message = "Database Error!";
                 }
             }
 
             return response;
         }
 
+        
         [HttpGet]
         public string get()
         {
             return "accountservice";
         }
 
+        [Authorize]
+        [HttpGet("authorizetest")]
+        public string authorizeTest()
+        {
+            return "You are Authorized!";
+        }
+
         [HttpGet("email")]
         public bool checkEmail(string email)
         {
-            return accRepository.checkEmail(email);
+            return _accService.checkEmail(email);
         }
 
+        [Authorize]
         [HttpPut]
         public bool update([FromBody] Account account)
         {
-            return accRepository.update(account);
+            return _accService.update(account);
         }
 
+        [Authorize]
         [HttpDelete]
         public bool delete([FromBody] Account account)
         {
-            return accRepository.delete(account);
+            return _accService.delete(account);
         }
 
     }

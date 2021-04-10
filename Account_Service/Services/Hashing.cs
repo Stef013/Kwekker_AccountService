@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace Account_Service.Logic
+namespace Account_Service.Services
 {
     public class Hashing
     {

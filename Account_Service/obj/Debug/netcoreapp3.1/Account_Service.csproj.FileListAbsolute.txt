@@ -85,7 +85,6 @@ C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\Debug\netcoreapp3.1\Account_Service.csprojAssemblyReference.cache
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\Debug\netcoreapp3.1\Account_Service.AssemblyInfoInputs.cache
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\Debug\netcoreapp3.1\Account_Service.AssemblyInfo.cs
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\Debug\netcoreapp3.1\Account_Service.csproj.CoreCompileInputs.cache
@@ -98,3 +97,7 @@ C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\Debug\netcoreapp3.1\Account_Service.dll
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\Debug\netcoreapp3.1\Account_Service.pdb
 C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\obj\Debug\netcoreapp3.1\Account_Service.genruntimeconfig.cache
+C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\StefanV\Documents\School\S6\Kwekker_AccountService\Account_Service\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
