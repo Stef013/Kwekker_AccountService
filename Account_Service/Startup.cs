@@ -31,7 +31,11 @@ namespace Account_Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+            {
+                builder.WithOrigins("https://localhost:44344").AllowAnyMethod().AllowAnyHeader();
+            }));
+
             services.AddControllers();
 
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
@@ -52,10 +56,12 @@ namespace Account_Service
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            //app.UseCors(x => x
+            //    .AllowAnyOrigin()
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader()
+            //    );
+            app.UseCors("ApiCorsPolicy");
 
             app.UseHttpsRedirection();
 

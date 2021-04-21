@@ -12,11 +12,9 @@ namespace Account_Service.Entities
         [Key]
         public int ID { get; set; }
 
-        [Required]
         public string email { get; set; }
-
-        [Required]
-        [JsonIgnore]
+ 
+ 
         public string password { get; set; } 
     }
 }
