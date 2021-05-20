@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Swashbuckle.AspNetCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -31,15 +32,25 @@ namespace Account_Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
-            {
-                builder.WithOrigins("https://localhost:44344").AllowAnyMethod().AllowAnyHeader();
-            }));
+            //services.AddSwaggerGen(config =>
+            //{
+            //    config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+            //    {
+            //        Title = "AccountService",
+            //        Version = "v1"
+            //    });
+            //});
+
+            //services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+            //{
+            //    builder.WithOrigins("https://localhost:44344").AllowAnyMethod().AllowAnyHeader();
+            //}));
 
             services.AddControllers();
+            
 
-            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContextPool<AccountDbContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+            string connectionStr = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContextPool<AccountDbContext>(options => options.UseSqlServer(connectionStr));
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
@@ -56,18 +67,20 @@ namespace Account_Service
                 app.UseDeveloperExceptionPage();
             }
 
+            //app.UseSwagger();
+            //app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "AccountService"));
+
             //app.UseCors(x => x
             //    .AllowAnyOrigin()
             //    .AllowAnyMethod()
             //    .AllowAnyHeader()
             //    );
-            app.UseCors("ApiCorsPolicy");
+          //  app.UseCors("ApiCorsPolicy");
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-           // app.UseAuthorization();
+            
 
             // custom jwt auth middleware
             app.UseMiddleware<JwtMiddleware>();
