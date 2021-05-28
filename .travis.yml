@@ -15,7 +15,7 @@ deploy:
   provider: azure_web_apps
   username: KwekkerAccountService\KwekkerUser
   password: Pudace5!
-  site: kwekkeraccountservice.azurewebsites.net
+  site: ftp://waws-prod-am2-419.ftp.azurewebsites.windows.net/site/wwwroot
   verbose: true
   on:
       branch: dev
