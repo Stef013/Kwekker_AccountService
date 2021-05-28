@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account_Service", "Account_Service\Account_Service.csproj", "{93860C20-D70E-4C1B-A3EF-16FDF340DA4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account_Service_Test", "Account_Service_Test\Account_Service_Test.csproj", "{AF91C982-99F7-4151-9533-A72CCF505605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account_Service_Test", "Account_Service_Test\Account_Service_Test.csproj", "{AF91C982-99F7-4151-9533-A72CCF505605}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{75E3D9E2-502F-4867-9C0E-0CE1BEE137E0}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
