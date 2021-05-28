@@ -13,9 +13,9 @@ script:
 
 deploy:
   provider: azure_web_apps
-  username: KwekkerAccountService\KwekkerUser
+  username: KwekkerUser
   password: Pudace5!
-  site: ftp://waws-prod-am2-419.ftp.azurewebsites.windows.net/site/wwwroot
+  site: KwekkerAccountService
   verbose: true
   on:
       branch: dev
