@@ -9,10 +9,12 @@ before_script:
 
 script: 
 - dotnet build ".\Account_Service" -c Release 
-- dotnet test ".\Account_Service_Test" -c Release -v n
+- dotnet test ".\Account_Service_Test" -v n
 
 deploy:
   provider: azure_web_apps
   username: $KwekkerAccountService
   password: d3wCS3CAG9yxPx5dgtfoE1hQ9McmWR6jkWlbwdK8nrGznqRn0x2yvR4ploo5
   site: https://kwekkeraccountservice.azurewebsites.net
+  on:
+      branch: dev
