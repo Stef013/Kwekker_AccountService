@@ -13,7 +13,7 @@ script:
 
 deploy:
   provider: azure_web_apps
-  username: '%24KwekkerAccountService'
+  username: 'KwekkerAccountService\$KwekkerAccountService'
   password: d3wCS3CAG9yxPx5dgtfoE1hQ9McmWR6jkWlbwdK8nrGznqRn0x2yvR4ploo5
   site: https://kwekkeraccountservice.azurewebsites.net
   verbose: true
