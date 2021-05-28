@@ -2,7 +2,8 @@ trigger:
     batch: true
 
 pool:
-  vmImage: 'windows-latest'
+  name: Azure Pipelines
+  demands: Limit -equals DisAbleParallel 
 
 variables:
   solution: '**/*.sln'
