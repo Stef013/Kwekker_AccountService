@@ -32,7 +32,9 @@ namespace Account_Service.Controllers
             var response = _accService.Authenticate(request);
 
             if (response == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                //StatusCode(400);
+                //return BadRequest(new { message = "Username or password is incorrect" });
+                return StatusCode(400);
 
             return Ok(response);
         }
@@ -75,8 +77,8 @@ namespace Account_Service.Controllers
         }
 
         [Authorize]
-        [HttpGet("authorizetest")]
-        public string authorizeTest()
+        [HttpGet("verify")]
+        public string verify()
         {
             return "You are Authorized!";
         }

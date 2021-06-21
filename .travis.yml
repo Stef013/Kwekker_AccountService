@@ -1,0 +1,22 @@
+language: csharp
+sudo: required
+mono: none
+dotnet: 3.1
+solution: Kwekker_AccountService.sln
+
+before_script: 
+- dotnet restore  
+
+script: 
+- dotnet build ".\Account_Service" -c Release 
+- dotnet test ".\Account_Service_Test" -v n
+
+deploy:
+  provider: azure_web_apps
+  username: '%24KwekkerAccountService'
+  password: d3wCS3CAG9yxPx5dgtfoE1hQ9McmWR6jkWlbwdK8nrGznqRn0x2yvR4ploo5
+  site: KwekkerAccountService
+  verbose: true
+  skip_cleanup: true
+  on:
+      branch: dev

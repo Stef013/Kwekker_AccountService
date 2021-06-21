@@ -28,6 +28,11 @@ namespace Account_Service.Services
             _appSettings = appSettings.Value;
         }
 
+        public AccountService(AccountDbContext context)
+        {
+            _context = context;
+        }
+
         public AuthenticationResponse Authenticate(AuthenticationRequest request)
         {
             hashing = new Hashing();
